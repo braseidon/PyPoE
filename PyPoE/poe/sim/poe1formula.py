@@ -212,6 +212,8 @@ def gem_stat_requirement(level, gtype=GemTypes.support, multi=100):
             a = 0.945  # 1.575*0.6
         elif multi == 40:
             a = 0.6575  # 1.64375 * 0.6
+        elif multi == 250:
+            a = 3.7375  # estimated: 1.495 * 2.5
         else:
             raise ValueError("Unsupported multi '%s'" % multi)
     else:
