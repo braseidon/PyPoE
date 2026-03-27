@@ -116,6 +116,7 @@ Warning Classes
 import io
 import os
 import re
+from decimal import Decimal, ROUND_HALF_UP
 import warnings
 from collections import OrderedDict, defaultdict
 from collections.abc import Iterable
@@ -1277,7 +1278,11 @@ class TQNumberFormat(TranslationQuantifier):
         elif self.dp == 0:
             return f"{round(v):n}"
         else:
-            formatted = "{0:.{dp}f}".format(v, dp=self.dp)
+            # Use Decimal to avoid IEEE 754 midpoint rounding errors.
+            # float 26.95 is stored as 26.9499... which rounds down to 26.9
+            # with str.format; Decimal("26.95") rounds correctly to 27.0.
+            quantizer = Decimal(10) ** -self.dp
+            formatted = str(Decimal(str(v)).quantize(quantizer, rounding=ROUND_HALF_UP))
             if self.fixed:
                 return formatted
             else:
