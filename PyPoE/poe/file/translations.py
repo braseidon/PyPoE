@@ -1275,7 +1275,7 @@ class TQNumberFormat(TranslationQuantifier):
         if self.dp is None:
             return f"{v:n}"
         elif self.dp == 0:
-            return f"{int(v):n}"
+            return f"{round(v):n}"
         else:
             formatted = "{0:.{dp}f}".format(v, dp=self.dp)
             if self.fixed:
