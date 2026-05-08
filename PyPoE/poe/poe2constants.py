@@ -762,6 +762,18 @@ class WORDLISTS(IntEnumOverride):
     MERCENARY_PREFIX = 13
     MERCENARY_SUFFIX = 14
 
+    @classmethod
+    def _missing_(cls, value):
+        # Permissive fallback for wordlist IDs added by newer GGG patches.
+        # Returns a synthetic IntEnum member so downstream code keeps working.
+        # Added 2026-05-08 after extraction crashed on values 15+ from latest PoE2 patch.
+        if isinstance(value, int) and value >= 0:
+            pseudo = int.__new__(cls, value)
+            pseudo._name_ = f"UNKNOWN_{value}"
+            pseudo._value_ = value
+            return pseudo
+        return None
+
 
 class DELVE_UPGRADE_TYPE(IntEnumOverride):
     """
