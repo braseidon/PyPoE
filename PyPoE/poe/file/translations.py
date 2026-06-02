@@ -2468,6 +2468,15 @@ def install_data_dependant_quantifiers(relational_reader: RelationalReader):
             placeholder="&lt;Keystone Passive Skill&gt;",
         )
 
+        TQRelationalData(
+            id="mages_legacy_index",
+            relational_reader=relational_reader,
+            table="UniqueMagesLegacy.dat64",
+            index_start=1,
+            value_column="DisplayText",
+            placeholder="Legacy of &lt;Utility Flask&gt;",
+        )
+
     TranslationQuantifierHandler.init()
 
 
@@ -2783,6 +2792,17 @@ TQNumberFormat(
     dp=2,
 )
 
+TQNumberFormat(
+    id="add_one",
+    addend=1,
+)
+
+TQNumberFormat(
+    id="divide_by_ten_thousand_1dp",
+    divisor=10000,
+    dp=1,
+)
+
 TranslationQuantifier(
     id="canonical_line",
     type=TranslationQuantifier.QuantifierTypes.STRING,
@@ -2851,6 +2871,10 @@ TranslationQuantifier(
 
 TranslationQuantifier(
     id="passive_keystone_index",
+)
+
+TranslationQuantifier(
+    id="mages_legacy_index",
 )
 
 TranslationQuantifierHandler.init()
