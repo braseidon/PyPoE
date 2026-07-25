@@ -2406,6 +2406,14 @@ def install_data_dependant_quantifiers(relational_reader: RelationalReader):
             placeholder="&lt;random Support Gem&gt;",
         )
 
+        TQRelationalData(
+            id="display_indexable_non_active_support",
+            relational_reader=relational_reader,
+            table="IndexableNonActiveSupportGems.dat64",
+            index_column="Index",
+            placeholder="&lt;random Support Gem (without Active Skill)&gt;",
+        )
+
     TQRelationalData(
         id="tree_expansion_jewel_passive",
         relational_reader=relational_reader,
@@ -2429,6 +2437,15 @@ def install_data_dependant_quantifiers(relational_reader: RelationalReader):
             index_column="Index",
             placeholder="&lt;random Skill&gt;",
         )
+
+    # if relational_reader.specification.sequel == 1:
+    #     TQRelationalData(
+    #         id="display_indexable_non_active_support",
+    #         relational_reader=relational_reader,
+    #         table="IndexableSupportGems.dat64",
+    #         index_column="Index",
+    #         placeholder="&lt;random Support Gem&gt;",
+    #     )
 
     if relational_reader.specification.sequel == 2:
         TQRelationalData(
@@ -2880,6 +2897,10 @@ TranslationQuantifier(
 
 TranslationQuantifier(
     id="mages_legacy_index",
+)
+
+TranslationQuantifier(
+    id="display_indexable_non_active_support",
 )
 
 TranslationQuantifierHandler.init()
