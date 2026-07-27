@@ -46,6 +46,7 @@ Documentation
 # =============================================================================
 
 # Python
+import math
 from enum import Enum
 
 # self
@@ -191,37 +192,17 @@ def gem_stat_requirement(level, gtype=GemTypes.support, multi=100):
         if gtype is invalid
     """
     if gtype == GemTypes.active:
-        b = 8 * multi / 100
-        if multi == 100:
-            a = 2.1
-            # can't find a good a for 8
-            b = 7.75
-        elif multi == 75:
-            a = 1.62
-        elif multi == 60:
-            a = 1.325
-        elif multi == 40:
-            a = 0.924
-        else:
-            raise ValueError("Unsupported multi '%s'" % multi)
+        stat_type = 0.7
     elif gtype == GemTypes.support:
-        b = 6 * multi / 100
-        if multi == 250:
-            a = 3.39
-        elif multi == 100:
-            a = 1.495
-        elif multi == 60:
-            a = 0.945  # 1.575*0.6
-        elif multi == 40:
-            a = 0.6575  # 1.64375 * 0.6
-        else:
-            raise ValueError("Unsupported multi '%s'" % multi)
+        stat_type = 0.5
     else:
         raise ValueError("Invalid gtype '%s'. Valid types are:\n%s" % (gtype, GemTypes))
 
     if level is None:
         return 0
-    result = round(level * a + b)
+    value = (20 + (level - 3) * 3) * (multi / 100) ** 0.9 * stat_type
+    # Round half up (the game rounds half up, not Python's round-half-to-even).
+    result = math.floor(value + 0.5)
     # Attribute requirements lower then 14 are not displayed in game.
     # TODO: Would it be more appropriate to output the result as-is and
     #       handle display on the wiki side?
