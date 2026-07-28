@@ -148,26 +148,19 @@ def gem_stat_requirement(level, gtype=GemTypes.support, multi=100):
     Calculates and returns the stat requirement for the specified level
     requirement.
 
-    The calculations vary depending on the gem type (i.e. active or support gem)
-    and on the multiplier.
+    A single closed form covers every gem type and every multiplier::
 
-    Currently only specific multipliers (100, 60, 40, etc.) are supported.
+        (20 + (level - 3) * 3) * (multi / 100) ** 0.9 * stat_type
+
+    where ``stat_type`` is 0.7 for active gems and 0.5 for support gems. The
+    result is rounded half up (the game rounds half up, not half to even).
+    Any multiplier is accepted, not just the values present in SkillGems.dat.
+
+    Requirements below 14 return 0, matching the game's display rule.
 
 
     .. warning::
-        These functions are primarily reverse engineered and may break with
-        updates.
-
-        Generally, the gem stat requirements seem to be based on a linear
-        function (i.e. f(x) = ax+b), however values are rounded.
-
-        For the values a & b were calculated with linear regression, then
-        sightly adjusted to produce the correct results for existing gems, but
-        it may not be entirely accurate.
-        In particular it seems strange that the formula changes depending on the
-        multiplier; I haven't been able to figure out a single formula that
-        works for all, so for the time being each multiplier comes with their
-        own formula.
+        This formula is reverse engineered and may break with game updates.
 
     Parameters
     ----------
@@ -188,7 +181,6 @@ def gem_stat_requirement(level, gtype=GemTypes.support, multi=100):
     Raises
     ------
     ValueError
-        if multi is unsupported
         if gtype is invalid
     """
     if gtype == GemTypes.active:
