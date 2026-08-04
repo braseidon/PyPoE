@@ -116,7 +116,7 @@ Warning Classes
 import io
 import os
 import re
-from decimal import Decimal, ROUND_HALF_UP
+from decimal import Decimal, ROUND_HALF_DOWN
 import warnings
 from collections import OrderedDict, defaultdict
 from collections.abc import Iterable
@@ -1278,11 +1278,14 @@ class TQNumberFormat(TranslationQuantifier):
         elif self.dp == 0:
             return f"{round(v):n}"
         else:
-            # Use Decimal to avoid IEEE 754 midpoint rounding errors.
-            # float 26.95 is stored as 26.9499... which rounds down to 26.9
-            # with str.format; Decimal("26.95") rounds correctly to 27.0.
+            # Use Decimal so the midpoint is detected exactly: float 26.95 is
+            # stored as 26.9499..., so str.format's tie handling depends on
+            # binary representation instead of the decimal value.
+            # The game breaks exact .5 ties DOWN (Clarity level 3: 387/60 =
+            # 6.45 displays as 6.4), so quantize with ROUND_HALF_DOWN and
+            # Decimal("26.95") -> 26.9. Non-tie values round normally.
             quantizer = Decimal(10) ** -self.dp
-            formatted = str(Decimal(str(v)).quantize(quantizer, rounding=ROUND_HALF_UP))
+            formatted = str(Decimal(str(v)).quantize(quantizer, rounding=ROUND_HALF_DOWN))
             if self.fixed:
                 return formatted
             else:
