@@ -116,7 +116,7 @@ Warning Classes
 import io
 import os
 import re
-from decimal import Decimal, ROUND_HALF_DOWN
+import struct
 import warnings
 from collections import OrderedDict, defaultdict
 from collections.abc import Iterable
@@ -1278,14 +1278,18 @@ class TQNumberFormat(TranslationQuantifier):
         elif self.dp == 0:
             return f"{round(v):n}"
         else:
-            # Use Decimal so the midpoint is detected exactly: float 26.95 is
-            # stored as 26.9499..., so str.format's tie handling depends on
-            # binary representation instead of the decimal value.
-            # The game breaks exact .5 ties DOWN (Clarity level 3: 387/60 =
-            # 6.45 displays as 6.4), so quantize with ROUND_HALF_DOWN and
-            # Decimal("26.95") -> 26.9. Non-tie values round normally.
-            quantizer = Decimal(10) ** -self.dp
-            formatted = str(Decimal(str(v)).quantize(quantizer, rounding=ROUND_HALF_DOWN))
+            # The game computes stat values in IEEE-754 single precision and
+            # renders them the way C printf does: round-half-to-even on the
+            # BINARY value. Decimal-domain tie rules are wrong in both
+            # directions -- 62133/60 is exactly 1035.55 in decimal but sits
+            # ABOVE it as a float32, so it displays 1035.6, while 387/60 is
+            # exactly 6.45 in decimal and sits BELOW, so it displays 6.4.
+            # Only values exactly representable in float32 (1605/60 = 26.75,
+            # 8115/60 = 135.25) are genuine ties, and half-even breaks those.
+            # Narrow to float32, then format at dp places -- Python's float
+            # formatting is correctly-rounded half-even, i.e. printf.
+            narrowed = struct.unpack("<f", struct.pack("<f", v))[0]
+            formatted = f"{narrowed:.{self.dp}f}"
             if self.fixed:
                 return formatted
             else:
