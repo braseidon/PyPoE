@@ -1096,6 +1096,13 @@ specification = Specification(
                     key="MonsterVarieties.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Achievements",
+                    fields=("NecropolisAchievements",),
+                    alias=True,
+                ),
+            ),
         ),
         "AlternatePassiveAdditions.dat": File(
             fields=(
@@ -1264,6 +1271,13 @@ specification = Specification(
                 Field(
                     name="Unknown10",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Icon_DDSFile",
+                    fields=("DDSIcon",),
+                    alias=True,
                 ),
             ),
         ),
@@ -1853,6 +1867,13 @@ specification = Specification(
                     name="NPCArena",
                     type="ref|out",
                     key="NPCs.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="NPC",
+                    fields=("NPCHub",),
+                    alias=True,
                 ),
             ),
         ),
@@ -2605,6 +2626,13 @@ specification = Specification(
                     type="bool",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="CharactersKey",
+                    fields=("Character",),
+                    alias=True,
+                ),
+            ),
         ),
         "AtlasExileBossArenas.dat": File(
             fields=(
@@ -2617,6 +2645,13 @@ specification = Specification(
                     name="WorldArea",
                     type="ref|out",
                     key="WorldAreas.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="WorldAreasKey",
+                    fields=("WorldArea",),
+                    alias=True,
                 ),
             ),
         ),
@@ -3064,6 +3099,18 @@ specification = Specification(
                 Field(
                     name="Unknown10",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="WorldAreasKey",
+                    fields=("Area1",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="FlavourTextKey",
+                    fields=("FlavourText",),
+                    alias=True,
                 ),
             ),
         ),
@@ -3954,6 +4001,38 @@ specification = Specification(
                     key="Mods.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="SoundEffectsKeys",
+                    fields=("SoundEffect",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="ModDomainsKey",
+                    fields=("ModDomain",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="ItemVisualIdentityKey",
+                    fields=("ItemVisualIdentity",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="VendorRecipe_AchievementItemsKeys",
+                    fields=("VendorRecipe_AchievementItems",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Identify_AchievementItemsKeys",
+                    fields=("Identify_AchievementItems",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="IdentifyMagic_AchievementItemsKeys",
+                    fields=("IdentifyMagic_AchievementItems",),
+                    alias=True,
+                ),
+            ),
         ),
         "BattlePassRewards.dat": File(
             fields=(
@@ -4570,6 +4649,18 @@ specification = Specification(
                     type="ref|list|int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Art",
+                    fields=("IconArt",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="MissionCompletion_AcheivementItemsKey",
+                    fields=("MissionCompletion_AchievementItemsKey",),
+                    alias=True,
+                ),
+            ),
         ),
         "BetrayalForts.dat": File(
             fields=(
@@ -4667,6 +4758,13 @@ specification = Specification(
                 Field(
                     name="RankImage",
                     type="ref|string",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="SafehouseLeader_AcheivementItemsKey",
+                    fields=("SafehouseLeader_AchievementItemsKey",),
+                    alias=True,
                 ),
             ),
         ),
@@ -5031,6 +5129,13 @@ specification = Specification(
                     type="ref|string",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="BaseItemTypesKey",
+                    fields=("Oil",),
+                    alias=True,
+                ),
+            ),
         ),
         "BlightCraftingRecipes.dat": File(
             fields=(
@@ -5072,6 +5177,18 @@ specification = Specification(
                     name="PassiveSkill",
                     type="ref|out",
                     key="PassiveSkills.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="ModsKey",
+                    fields=("Mod",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="PassiveSkillsKey",
+                    fields=("PassiveSkill",),
+                    alias=True,
                 ),
             ),
         ),
@@ -6323,6 +6440,18 @@ specification = Specification(
                 Field(
                     name="Flag19",
                     type="bool",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Binary_StatsKeys",
+                    fields=("GrantedFlags",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="BinaryStats",
+                    fields=("GrantedFlags",),
+                    alias=True,
                 ),
             ),
         ),
@@ -8376,6 +8505,23 @@ specification = Specification(
                     type="ref|list|int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Cost",
+                    fields=(
+                        "Cost_BaseItemTypes",
+                        "Cost_Values",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="AddModOrEnchantment",
+                    fields=(
+                        "AddMod",
+                        "AddEnchantment",
+                    ),
+                ),
+            ),
         ),
         "CraftingBenchSortCategories.dat": File(
             fields=(
@@ -8590,6 +8736,13 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Life",
+                    fields=("MoreLife",),
+                    alias=True,
+                ),
+            ),
         ),
         "CruciblePlayerClassOffsets.dat": File(
             fields=(
@@ -8790,6 +8943,13 @@ specification = Specification(
                 Field(
                     name="Flag1",
                     type="bool",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Stacks",
+                    fields=("StackSize",),
+                    alias=True,
                 ),
             ),
         ),
@@ -9586,6 +9746,18 @@ specification = Specification(
                 Field(
                     name="MonsterPhysConversionMulti",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Life",
+                    fields=("MonsterLife",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="AllyLife",
+                    fields=("MinionLife",),
+                    alias=True,
                 ),
             ),
         ),
@@ -10391,6 +10563,16 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Stats",
+                    fields=(
+                        "StatsKeys",
+                        "StatValues",
+                    ),
+                    zip=True,
+                ),
+            ),
         ),
         "Descendancy.dat": File(
             fields=(
@@ -10445,6 +10627,13 @@ specification = Specification(
                     name="UIArt",
                     type="ref|out",
                     key="UIArtAscendancy.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="UIArt",
+                    fields=("PassiveTreeUIArt",),
+                    alias=True,
                 ),
             ),
         ),
@@ -12706,6 +12895,13 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Life",
+                    fields=("MoreLife",),
+                    alias=True,
+                ),
+            ),
         ),
         "FaridunWishFamilies.dat": File(
             fields=(
@@ -14420,6 +14616,13 @@ specification = Specification(
                     key="GrantedEffectStatSets.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatSet",
+                    fields=("StatSet1",),
+                    alias=True,
+                ),
+            ),
         ),
         "GrantedEffectsPerLevel.dat": File(
             fields=(
@@ -14508,6 +14711,51 @@ specification = Specification(
                 Field(
                     name="AttackTime",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatValues",
+                    fields=(
+                        "Stat1Value",
+                        "Stat2Value",
+                        "Stat3Value",
+                        "Stat4Value",
+                        "Stat5Value",
+                        "Stat6Value",
+                        "Stat7Value",
+                        "Stat8Value",
+                        "Stat9Value",
+                    ),
+                ),
+                VirtualField(
+                    name="StatFloats",
+                    fields=(
+                        "Stat1Float",
+                        "Stat2Float",
+                        "Stat3Float",
+                        "Stat4Float",
+                        "Stat5Float",
+                        "Stat6Float",
+                        "Stat7Float",
+                        "Stat8Float",
+                    ),
+                ),
+                VirtualField(
+                    name="Stats",
+                    fields=(
+                        "StatsKeys",
+                        "StatValues",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="Costs",
+                    fields=(
+                        "CostTypesKeys",
+                        "CostAmounts",
+                    ),
+                    zip=True,
                 ),
             ),
         ),
@@ -15073,6 +15321,23 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="HarvestCraftTiersKey",
+                    fields=("Tier",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="LifeforceCostType",
+                    fields=("LifeforceType",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="SacredBlossomCost",
+                    fields=("SacredCost",),
+                    alias=True,
+                ),
+            ),
         ),
         "HarvestCraftTiers.dat": File(
             fields=(
@@ -15117,6 +15382,13 @@ specification = Specification(
                 Field(
                     name="MoreLife",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Life",
+                    fields=("MoreLife",),
+                    alias=True,
                 ),
             ),
         ),
@@ -15394,6 +15666,13 @@ specification = Specification(
                     name="RewardHardmode",
                     type="ref|out",
                     key="ClientStrings.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="ClientStringsKey",
+                    fields=("Reward",),
+                    alias=True,
                 ),
             ),
         ),
@@ -16021,6 +16300,13 @@ specification = Specification(
                     name="GrantedEffect",
                     type="ref|out",
                     key="GrantedEffects.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatsKey",
+                    fields=("Stat",),
+                    alias=True,
                 ),
             ),
         ),
@@ -16688,6 +16974,18 @@ specification = Specification(
                 Field(
                     name="MoreLife",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="AreaLevel",
+                    fields=("Level",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Scale",
+                    fields=("MoreLife",),
+                    alias=True,
                 ),
             ),
         ),
@@ -17719,6 +18017,13 @@ specification = Specification(
                     key="Mods.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="ModsKey",
+                    fields=("Mods",),
+                    alias=True,
+                ),
+            ),
         ),
         "IncursionUniqueUpgradeComponents.dat": File(
             fields=(
@@ -17779,6 +18084,13 @@ specification = Specification(
                     name="IndexRuthless",
                     type="ref|generic",
                     key="IndexableSkillGems.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Name",
+                    fields=("Name1",),
+                    alias=True,
                 ),
             ),
         ),
@@ -19243,6 +19555,13 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="BaseItemTypesKey",
+                    fields=("BaseItemTypes",),
+                    alias=True,
+                ),
+            ),
         ),
         "ItemisedVisualEffectExclusiveTypes.dat": File(
             fields=(
@@ -19425,6 +19744,13 @@ specification = Specification(
                 Field(
                     name="ShopRerollCost",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="AreaLevel",
+                    fields=("MapAreaLevelOffered",),
+                    alias=True,
                 ),
             ),
         ),
@@ -19973,6 +20299,13 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="Scaling",
+                    fields=("MoreLife",),
+                    alias=True,
+                ),
+            ),
         ),
         "LakeMetaOptions.dat": File(
             fields=(
@@ -19983,6 +20316,13 @@ specification = Specification(
                 Field(
                     name="Data0",
                     type="ref|list|int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="TextAudio",
+                    fields=("TextAudioIntro",),
+                    alias=True,
                 ),
             ),
         ),
@@ -21146,6 +21486,13 @@ specification = Specification(
                     type="bool",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="WorldAreasKey",
+                    fields=("WorldArea",),
+                    alias=True,
+                ),
+            ),
         ),
         "MapDevices.dat": File(
             fields=(
@@ -21425,6 +21772,40 @@ specification = Specification(
                     key="ItemCosts.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="NormalPurchase",
+                    fields=(
+                        "NormalPurchase_BaseItemTypesKeys",
+                        "NormalPurchase_Costs",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="MagicPurchase",
+                    fields=(
+                        "MagicPurchase_BaseItemTypesKeys",
+                        "MagicPurchase_Costs",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="RarePurchase",
+                    fields=(
+                        "RarePurchase_BaseItemTypesKeys",
+                        "RarePurchase_Costs",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="UniquePurchase",
+                    fields=(
+                        "UniquePurchase_BaseItemTypesKeys",
+                        "UniquePurchase_Costs",
+                    ),
+                    zip=True,
+                ),
+            ),
         ),
         "MapRelicInventoryLayout.dat": File(
             fields=(
@@ -21633,6 +22014,33 @@ specification = Specification(
                 Field(
                     name="AbyssalTier",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="HellscapeTier",
+                    fields=("ScourgeTier",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="LakeTier",
+                    fields=("KalandraTier",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="AncestralTier",
+                    fields=("AncestorTier",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="MercenariesTier",
+                    fields=("SecretsTier",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="FaridunTier",
+                    fields=("MirageTier",),
+                    alias=True,
                 ),
             ),
         ),
@@ -22033,6 +22441,13 @@ specification = Specification(
                     name="Achievements2",
                     type="ref|list|ref|out",
                     key="AchievementItems.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="BaseItemTypesKey",
+                    fields=("BaseItemType",),
+                    alias=True,
                 ),
             ),
         ),
@@ -23333,6 +23748,13 @@ specification = Specification(
                 Field(
                     name="Unknown6",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Script",
+                    fields=("Script1",),
+                    alias=True,
                 ),
             ),
         ),
@@ -24759,6 +25181,167 @@ specification = Specification(
                     type="bool",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="BuffTemplate",
+                    fields=("BuffTemplate1",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="SpawnWeight",
+                    fields=(
+                        "SpawnWeight_TagsKeys",
+                        "SpawnWeight_Values",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="Stat1Zip",
+                    fields=(
+                        "StatsKey1",
+                        "Stat1Min",
+                        "Stat1Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat2Zip",
+                    fields=(
+                        "StatsKey2",
+                        "Stat2Min",
+                        "Stat2Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat3Zip",
+                    fields=(
+                        "StatsKey3",
+                        "Stat3Min",
+                        "Stat3Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat4Zip",
+                    fields=(
+                        "StatsKey4",
+                        "Stat4Min",
+                        "Stat4Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat5Zip",
+                    fields=(
+                        "StatsKey5",
+                        "Stat5Min",
+                        "Stat5Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat6Zip",
+                    fields=(
+                        "StatsKey6",
+                        "Stat6Min",
+                        "Stat6Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat7Zip",
+                    fields=(
+                        "StatsKey7",
+                        "Stat7Min",
+                        "Stat7Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat8Zip",
+                    fields=(
+                        "StatsKey8",
+                        "Stat8Min",
+                        "Stat8Max",
+                    ),
+                ),
+                VirtualField(
+                    name="StatsKeys",
+                    fields=(
+                        "StatsKey1",
+                        "StatsKey2",
+                        "StatsKey3",
+                        "StatsKey4",
+                        "StatsKey5",
+                        "StatsKey6",
+                        "StatsKey7",
+                        "StatsKey8",
+                    ),
+                ),
+                VirtualField(
+                    name="Stats",
+                    fields=(
+                        "Stat1Zip",
+                        "Stat2Zip",
+                        "Stat3Zip",
+                        "Stat4Zip",
+                        "Stat5Zip",
+                        "Stat6Zip",
+                        "Stat7Zip",
+                        "Stat8Zip",
+                    ),
+                ),
+                VirtualField(
+                    name="GenerationWeight",
+                    fields=(
+                        "GenerationWeight_TagsKeys",
+                        "GenerationWeight_Values",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="Stat1",
+                    fields=(
+                        "StatsKey1",
+                        "Stat1Min",
+                        "Stat1Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat2",
+                    fields=(
+                        "StatsKey2",
+                        "Stat2Min",
+                        "Stat2Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat3",
+                    fields=(
+                        "StatsKey3",
+                        "Stat3Min",
+                        "Stat3Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat4",
+                    fields=(
+                        "StatsKey4",
+                        "Stat4Min",
+                        "Stat4Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat5",
+                    fields=(
+                        "StatsKey5",
+                        "Stat5Min",
+                        "Stat5Max",
+                    ),
+                ),
+                VirtualField(
+                    name="Stat6",
+                    fields=(
+                        "StatsKey6",
+                        "Stat6Min",
+                        "Stat6Max",
+                    ),
+                ),
+            ),
         ),
         "MonsterArmours.dat": File(
             fields=(
@@ -25277,6 +25860,43 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatsKey1",
+                    fields=("Stat1",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey2",
+                    fields=("Stat2",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey3",
+                    fields=("Stat3",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey4",
+                    fields=("Stat4",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey5",
+                    fields=("Stat5",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Stats",
+                    fields=(
+                        "Stat1",
+                        "Stat2",
+                        "Stat3",
+                        "Stat4",
+                        "Stat5",
+                    ),
+                ),
+            ),
         ),
         "MonsterMapDifficulty.dat": File(
             fields=(
@@ -25319,6 +25939,37 @@ specification = Specification(
                 Field(
                     name="Stat4Value",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatsKey1",
+                    fields=("Stat1",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey2",
+                    fields=("Stat2",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey3",
+                    fields=("Stat3",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKey4",
+                    fields=("Stat4",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Stats",
+                    fields=(
+                        "Stat1",
+                        "Stat2",
+                        "Stat3",
+                        "Stat4",
+                    ),
                 ),
             ),
         ),
@@ -25600,6 +26251,13 @@ specification = Specification(
                     key="NecropolisPacks.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="TagsKeys",
+                    fields=("Tags",),
+                    alias=True,
+                ),
+            ),
         ),
         "MonsterProjectileAttack.dat": File(
             fields=(
@@ -25872,6 +26530,13 @@ specification = Specification(
                 Field(
                     name="BaseDamageIgnoresAttackSpeed",
                     type="bool",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="MonsterResistancesKey",
+                    fields=("Resistances",),
+                    alias=True,
                 ),
             ),
         ),
@@ -27201,6 +27866,13 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="QuestFlag",
+                    fields=("QuestFlag5",),
+                    alias=True,
+                ),
+            ),
         ),
         "NPCTalk.dat": File(
             fields=(
@@ -27479,6 +28151,13 @@ specification = Specification(
                 Field(
                     name="Unknown4",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="CharactersKey",
+                    fields=("Characters",),
+                    alias=True,
                 ),
             ),
         ),
@@ -28385,6 +29064,33 @@ specification = Specification(
                     key="QuestFlags.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="BaseItemTypesKey",
+                    fields=("CapturedVessel",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="MonsterVarietiesKey",
+                    fields=("CapturedMonster",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="PantheonPanelLayoutKey",
+                    fields=("PanelLayout",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="BossDescription",
+                    fields=("CapturedMonsterDescription",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="WorldAreasKey",
+                    fields=("WorldArea",),
+                    alias=True,
+                ),
+            ),
         ),
         "PassiveJewelArt.dat": File(
             fields=(
@@ -28589,6 +29295,29 @@ specification = Specification(
                     key="GrantedEffectsPerLevel.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatValues",
+                    fields=(
+                        "Stat1Value",
+                        "Stat2Value",
+                        "Stat3Value",
+                    ),
+                ),
+                VirtualField(
+                    name="StatsZip",
+                    fields=(
+                        "Stats",
+                        "StatValues",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="StatsKeys",
+                    fields=("Stats",),
+                    alias=True,
+                ),
+            ),
         ),
         "PassiveSkillMasteryGroups.dat": File(
             fields=(
@@ -28720,6 +29449,18 @@ specification = Specification(
                     key="PassiveSkills.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="PassiveSkillOverrideTypesKey",
+                    fields=("Type",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="AllocatedPassiveSkillKey",
+                    fields=("AllocatedPassiveSkill",),
+                    alias=True,
+                ),
+            ),
         ),
         "PassiveSkillStatCategories.dat": File(
             fields=(
@@ -28779,6 +29520,18 @@ specification = Specification(
                     name="OverrideType",
                     type="ref|out",
                     key="PassiveSkillOverrideTypes.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="BaseItemTypesKey",
+                    fields=("Tattoo",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="PassiveSkillOverrideTypesKey",
+                    fields=("OverrideType",),
+                    alias=True,
                 ),
             ),
         ),
@@ -29363,6 +30116,74 @@ specification = Specification(
                     type="bool",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="StatValues",
+                    fields=(
+                        "Stat1Value",
+                        "Stat2Value",
+                        "Stat3Value",
+                        "Stat4Value",
+                        "Stat5Value",
+                    ),
+                ),
+                VirtualField(
+                    name="StatsZip",
+                    fields=(
+                        "Stats",
+                        "StatValues",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="StatValuesHardmode",
+                    fields=(
+                        "Stat1ValueHardmode",
+                        "Stat2ValueHardmode",
+                        "Stat3ValueHardmode",
+                        "Stat4ValueHardmode",
+                        "Stat5ValueHardmode",
+                    ),
+                ),
+                VirtualField(
+                    name="StatsHardmodeZip",
+                    fields=(
+                        "StatsHardmode",
+                        "StatValuesHardmode",
+                    ),
+                    zip=True,
+                ),
+                VirtualField(
+                    name="ReminderTextKeys",
+                    fields=("ReminderStrings",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="StatsKeys",
+                    fields=("Stats",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="CharactersKeys",
+                    fields=("Characters",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="AchievementItemsKey",
+                    fields=("AchievementItem",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="PassiveSkillBuffsKeys",
+                    fields=("PassiveSkillBuffs",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="GrantedEffectsPerLevelKey",
+                    fields=("GrantedEffectsPerLevel",),
+                    alias=True,
+                ),
+            ),
         ),
         "PassiveTreeExpansionJewelSizes.dat": File(
             fields=(
@@ -29704,6 +30525,18 @@ specification = Specification(
                     type="int",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="AreaLevel",
+                    fields=("Level",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Scale",
+                    fields=("MoreLife",),
+                    alias=True,
+                ),
+            ),
         ),
         "Projectiles.dat": File(
             fields=(
@@ -29874,6 +30707,13 @@ specification = Specification(
                     name="Stat",
                     type="ref|out",
                     key="Stats.dat",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="Projectile",
+                    fields=("Id",),
+                    alias=True,
                 ),
             ),
         ),
@@ -30267,6 +31107,13 @@ specification = Specification(
                 Field(
                     name="Unknown2",
                     type="ref|string",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="QuestKey",
+                    fields=("Quest",),
+                    alias=True,
                 ),
             ),
         ),
@@ -30892,6 +31739,13 @@ specification = Specification(
                 Field(
                     name="MoreLife",
                     type="int",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="AdditionalLife",
+                    fields=("MoreLife",),
+                    alias=True,
                 ),
             ),
         ),
@@ -32340,6 +33194,33 @@ specification = Specification(
                     key="GemEffects.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="ExperienceProgression",
+                    fields=("ItemExperienceType",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Str",
+                    fields=("StrengthRequirementPercent",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Int",
+                    fields=("IntelligenceRequirementPercent",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="Dex",
+                    fields=("DexterityRequirementPercent",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="GemEffects",
+                    fields=("GemVariants",),
+                    alias=True,
+                ),
+            ),
         ),
         "SkillMineVariations.dat": File(
             fields=(
@@ -33472,6 +34353,13 @@ specification = Specification(
                 Field(
                     name="Unknown0",
                     type="ref|string",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="ChestsKey",
+                    fields=("Chest",),
+                    alias=True,
                 ),
             ),
         ),
@@ -35465,6 +36353,13 @@ specification = Specification(
                     key="Mods.dat",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="PreviousTiers",
+                    fields=("PreviousTier",),
+                    alias=True,
+                ),
+            ),
         ),
         "UltimatumTrialMasterAudio.dat": File(
             fields=(
@@ -36820,6 +37715,18 @@ specification = Specification(
                     description="the inflection identifier used for i18n in related fields",
                 ),
             ),
+            virtual_fields=(
+                VirtualField(
+                    name="WordlistsKey",
+                    fields=("Wordlist",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="SpawnWeight_TagsKeys",
+                    fields=("SpawnWeight_Tags",),
+                    alias=True,
+                ),
+            ),
         ),
         "WorldAreaLeagueChances.dat": File(
             fields=(
@@ -37327,6 +38234,23 @@ specification = Specification(
                 Field(
                     name="Data1",
                     type="ref|list|byte",
+                ),
+            ),
+            virtual_fields=(
+                VirtualField(
+                    name="AreaType_TagsKeys",
+                    fields=("AreaTypeTags",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="VaalArea_WorldAreasKeys",
+                    fields=("VaalArea",),
+                    alias=True,
+                ),
+                VirtualField(
+                    name="TagsKeys",
+                    fields=("Tags",),
+                    alias=True,
                 ),
             ),
         ),
