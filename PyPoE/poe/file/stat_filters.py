@@ -99,9 +99,16 @@ class StatFilterFile(AbstractFileReadOnly):
 
     _re_find_sections = re.compile(
         # header
-        r"^(?:" r"group (?P<group>[\w]+)|" r'(?P<skill_id>[\w]+) "(?P<file>[\w/\.]+)"' r")[\r\n]+"
+        # A few headers carry two spaces before the file (`phase_run  "..."`).
+        r"^(?:" r"group (?P<group>[\w]+)|" r'(?P<skill_id>[\w]+)[ \t]+"(?P<file>[\w/\.]+)"' r")[ \t]*[\r\n]+"
         # contents
         r"^{" r"(?P<contents>[^}]*)" r"^}",
+        re.UNICODE | re.MULTILINE,
+    )
+
+    # `copy <skill id> <source skill id>`: the skill reads the source's file and stats.
+    _re_find_copies = re.compile(
+        r"^copy[ \t]+(?P<skill_id>[\w]+)[ \t]+(?P<source_id>[\w]+)[ \t]*\r?$",
         re.UNICODE | re.MULTILINE,
     )
 
@@ -134,4 +141,20 @@ class StatFilterFile(AbstractFileReadOnly):
                     skill_id=match.group("skill_id"),
                     translation_file_path=match.group("file"),
                     stats=stats,
+                )
+
+        # Copies resolve after every section is read: a source may be defined later in
+        # the file, or be a copy itself. A copy never replaces a skill with its own section.
+        copies = {m.group("skill_id"): m.group("source_id") for m in self._re_find_copies.finditer(data)}
+        pending = {k: v for k, v in copies.items() if k not in self.skills}
+        while pending:
+            resolved = [k for k, v in pending.items() if v in self.skills]
+            if not resolved:
+                break
+            for skill_id in resolved:
+                source = self.skills[pending.pop(skill_id)]
+                self.skills[skill_id] = SkillEntry(
+                    skill_id=skill_id,
+                    translation_file_path=source.translation_file_path,
+                    stats=list(source.stats),
                 )
