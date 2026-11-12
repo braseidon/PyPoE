@@ -73,14 +73,18 @@ class SkillEntry(ReprMixin):
         Path is relative to content.ggpk
     stats : list[str]
         Order in which to display stats
+    entries : list[str]
+        The section's lines as written: description names, and `$<group>` where
+        the section pulls in a group (`stats` holds the same with groups expanded)
     """
 
-    __slots__ = ["skill_id", "translation_file_path", "stats"]
+    __slots__ = ["skill_id", "translation_file_path", "stats", "entries"]
 
-    def __init__(self, skill_id, translation_file_path, stats):
+    def __init__(self, skill_id, translation_file_path, stats, entries=None):
         self.skill_id = skill_id
         self.translation_file_path = translation_file_path
         self.stats = stats
+        self.entries = entries if entries is not None else list(stats)
 
 
 class StatFilterFile(AbstractFileReadOnly):
@@ -141,6 +145,7 @@ class StatFilterFile(AbstractFileReadOnly):
                     skill_id=match.group("skill_id"),
                     translation_file_path=match.group("file"),
                     stats=stats,
+                    entries=contents,
                 )
 
         # Copies resolve after every section is read: a source may be defined later in
@@ -157,4 +162,5 @@ class StatFilterFile(AbstractFileReadOnly):
                     skill_id=skill_id,
                     translation_file_path=source.translation_file_path,
                     stats=list(source.stats),
+                    entries=list(source.entries),
                 )
